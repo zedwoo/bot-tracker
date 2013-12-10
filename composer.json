@@ -1,0 +1,35 @@
+{
+    "name": "zedwoo/bot-tracker",
+    "homepage": "https://github.com/zedwoo/bot-tracker",
+    "description": "",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "michael janssen",
+            "email": "m.janssen@zedwoo.de"
+        }
+    ],
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.0.x-dev"
+        }
+    },
+    "support": {
+        "issues": "https://github.com/zedwoo/bot-tracker/issues"
+    },
+    "minimum-stability": "dev",
+
+    "require": {
+        "php": ">=5.3.3",
+        "ext-curl": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "3.7.*"
+    },
+    "autoload": {
+        "psr-0" : {
+            "Zedwoo\\BotTracker" : "src/"
+        }
+    }
+}
