@@ -56,14 +56,6 @@ class BotTracker
     /**
      * @return mixed
      */
-    public function getRequest()
-    {
-
-    }
-
-    /**
-     * @return mixed
-     */
     private function getLogMessage()
     {
         $this->logMessage = $this->getRequestIp() .
