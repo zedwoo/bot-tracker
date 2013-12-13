@@ -210,7 +210,7 @@ class BotTracker
         } else {
             $time = time();
         }
-        return date('d/M/Y:h:i:s O', $time);
+        return date('d/M/Y:H:i:s O', $time);
     }
 
     /**
