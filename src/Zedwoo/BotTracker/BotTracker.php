@@ -58,7 +58,7 @@ class BotTracker
             @curl_exec($ch);
             $info = curl_getinfo($ch);
 			curl_close($ch);
-			if(!empty($info['CURLINFO_HTTP_CODE']) AND $info['CURLINFO_HTTP_CODE'] == 200){
+			if(!empty($info['http_code']) AND $info['http_code'] == 200){
 				$result = true;
 			}
         }
