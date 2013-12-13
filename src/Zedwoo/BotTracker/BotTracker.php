@@ -27,11 +27,17 @@ class BotTracker
 
     public function doLog()
     {
-        if ($this->isBot() === true) $this->sendRequest();
+        if ($this->isBot() === true){
+			$result = $this->sendRequest();
+		} else {
+			$result = false;
+		}
+		return $result;
     }
 
     private function sendRequest()
     {
+		$result = false;
         if (function_exists('curl_init')) {
             $url = 'https://' . $this->getSplunkHostName()
                 . '/1/inputs/http?index='
@@ -48,13 +54,19 @@ class BotTracker
             curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
             curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type' => 'text/plain'));
             curl_setopt($ch, CURLOPT_POSTFIELDS, $this->getLogMessage());
+
             @curl_exec($ch);
-            curl_close($ch);
+            $info = curl_getinfo($ch);
+			curl_close($ch);
+			if(!empty($info['CURLINFO_HTTP_CODE']) AND $info['CURLINFO_HTTP_CODE'] == 200){
+				$result = true;
+			}
         }
+		return $result;
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     private function getLogMessage()
     {
